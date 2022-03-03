@@ -86,6 +86,11 @@ void convert(const char *filename) {
             size /= 2;
             WRITE(pos);
             WRITE(size);
+            loc += 8;
+            if(fseek(f, loc, SEEK_SET)) {
+                perror("cannot seek forward");
+                abort();
+            }
         }
     }
 
